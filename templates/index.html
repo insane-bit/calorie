@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calorie Burn Predictor</title>
+  <style>
+    /* Background Gradient */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Container styling */
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    /* Form styling */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #555;
+      text-align: left;
+      margin-bottom: 5px;
+    }
+
+    input[type="number"],
+    select {
+      padding: 10px 12px;
+      border: 1.8px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    input[type="number"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #6a82fb;
+      box-shadow: 0 0 5px #6a82fb;
+    }
+
+    input[type="submit"] {
+      background: #6a82fb;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+    input[type="submit"]:hover {
+      background: #5061d3;
+    }
+
+    /* Prediction message styling */
+    .prediction {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #2c3e50;
+      min-height: 30px;
+      min-width: 280px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Calorie Burn Predictor</h1>
+    <form method="post">
+      <label for="Age">Age:</label>
+      <input type="number" id="Age" name="Age" min="10" max="100" step="1" required />
+
+      <label for="Height">Height (cm):</label>
+      <input type="number" id="Height" name="Height" min="100" max="250" step="0.1" required />
+
+      <label for="Weight">Weight (kg):</label>
+      <input type="number" id="Weight" name="Weight" min="30" max="200" step="0.1" required />
+
+      <label for="Gender">Gender:</label>
+      <select id="Gender" name="Gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <label for="Duration">Duration (minutes):</label>
+      <input type="number" id="Duration" name="Duration" min="1" max="180" step="0.1" required />
+
+      <label for="Exercise_Type">Exercise Type:</label>
+      <select id="Exercise_Type" name="Exercise_Type" required>
+        <option value="Running">Running</option>
+        <option value="Cycling">Cycling</option>
+        <option value="Yoga">Yoga</option>
+        <option value="Swimming">Swimming</option>
+        <option value="Dancing">Dancing</option>
+        <option value="HIIT">HIIT</option>
+        <option value="Walking">Walking</option>
+      </select>
+
+      <label for="Time_of_Day">Time of Day:</label>
+      <select id="Time_of_Day" name="Time_of_Day" required>
+        <option value="0">Morning</option>
+        <option value="1">Afternoon</option>
+        <option value="2">Evening</option>
+        <option value="3">Night</option>
+      </select>
+
+      <input type="submit" value="Predict Calories" />
+    </form>
+    <div class="prediction">
+      {{ prediction }}
+    </div>
+  </div>
+</body>
+</html>
